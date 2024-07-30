@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="stylesheet" href="assets/css/padding-oracle-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <!-- and it's easy to individually load additional languages -->
+        <title>Padding Oracle</title>
+    </head>
+    <body>
+      <header-component></header-component>
+
+        <div class="col-lg-10 mx-auto px-4 py-3">
+            <main class="">
+                    <!--exerpt-->
+                    
+                    <div class="container-fluid">
+                      <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Concept Demo: Padding Oracle</h2>
+                      <div class="d-flex justify-content-center">
+                        <div class="text-center">        
+                          <div class="d-flex flex-column mb-3">
+                        
+                            <div>Cipher Text
+                                <div id="ciphertext-value"></div>
+                            </div>
+
+                            <i class="bi bi-arrow-down display-6"></i>
+
+                            <div class="d-flex flex-row justify-content-center column-gap-2" style="margin-right: 80px;">
+                                <div class="align-self-center">Key</div>
+                                <i class="bi bi-arrow-right display-6"></i>
+                                <div class="card text-center">
+                                  <div class="card-body">
+                                    AES
+                                  </div>
+                                </div>
+                            </div>
+
+                            <i class="bi bi-arrow-down display-6"></i>
+                            
+                            <div>Decrypted Text
+                              <div id="xor-value-blur" 
+                                   class="bg-dark-subtle position-relative" 
+                                   data-bs-toggle="tooltip" 
+                                   data-bs-placement="right" 
+                                   data-bs-title="Click to see the content">
+                                  <div id="xor-value" class="position-relative z-n1"></div>
+                              </div>
+                            </div>
+                            
+                            <div class="display-6">⊕</div>
+
+                            <div>Initialization Vector (IV)
+                                  <div id="IV"
+                                       data-bs-toggle="tooltip" 
+                                       data-bs-placement="right" 
+                                       data-bs-title="You could change the value">
+                                  </div>
+                            </div>
+
+                            <i class="bi bi-arrow-down display-6"></i>
+
+                            <div class="mb-3 ">Plaintext
+                              <div id="plaintext-blur"
+                                   class="bg-dark-subtle position-relative" 
+                                   data-bs-toggle="tooltip" 
+                                   data-bs-placement="right" 
+                                   data-bs-title="Click to see the content">
+                                <div id="plaintext-hex" class="position-relative z-n1"></div>
+                              </div>
+                            </div>
+                            
+                            <div class="fw-bold" id="padding-check"></div>
+                          </div>
+                          
+                          
+                          <div class="form-check form-switch d-flex flex-row justify-content-center">
+                            <input class="form-check-input" type="checkbox" role="switch" id="step-mode" checked onclick="step_mode()">
+                            <label class="form-check-label mx-1" for="step-mode">Single Step Mode</label>
+                          </div>
+                          
+                          <div class="d-none" id="all-step-mode">
+                            <button id="all-step" class="btn btn-primary" onclick="autoStep_v3(0, 1)">All Step</button>
+                          </div>
+                          <!-- <button class="btn btn-primary" onclick="bruteforce_step()">Brute Force</button> !-->
+
+                          <div class="d-block" id="step-mode-checked">
+                            <button id="single-step" class="btn btn-primary" onclick="step_by_step(0)">Single Step</button>
+
+                            <div class="d-inline-block">
+                              <select class="form-select" id="select-padding" aria-label="Default select example">
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                                <option value="7">07</option>
+                                <option value="8">08</option>
+                                <option value="9">09</option>
+                                <option value="10">0a</option>
+                                <option value="11">0b</option>
+                                <option value="12">0c</option>
+                                <option value="13">0d</option>
+                                <option value="14">0e</option>
+                                <option value="15">0f</option>
+                                <option value="16">10</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            </main>
+          </div>
+        <!--
+        <footer class="container-fluid py-1 bg-body-secondary fixed-bottom">
+            <ul class="nav justify-content-center fw-bold">
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">&copy; 2023 The Chinese University of Hong Kong. All Rights Reserved.</p>
+        </footer> 
+        -->
+        <!-- Scirpts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/padding-oracle.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+    </body>
+</html>

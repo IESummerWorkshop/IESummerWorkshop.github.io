@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Coding Lab</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" language="javascript" src="/assets/js/lab-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js"></script>
+  <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
+  <script src="https://unpkg.com/konami@1.6.3/konami.js"></script>
+</head>
+<style>
+  #editor {
+    width: 100%;
+    height: 25rem;
+    border: 1px solid #ddd;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 25rem;
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+    padding: 10px;
+  }
+  .problem {
+    background: #e8f4f8;
+    padding: 10px;
+    border: 1px solid #007acc;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @media (max-width: 991.98px) { 
+    #editor {
+      width: 100%;
+      height: 15rem;
+      border: 1px solid #ddd;
+    }
+    pre {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      width: 100%;
+      height: 15rem;
+      white-space: pre-wrap; /* Preserve whitespace and line breaks */
+      padding: 10px;
+    }
+  }
+</style>
+<body>
+  <div class="container-fluid">
+    <h1>Python Coding Lab</h1>
+    <div class="row">
+      <div >
+        <div class="problem">
+          <h2 id="title"></h2>
+          <p id="description"></p>
+        </div>
+      </div>
+    </div>
+    <div class="loader"></div>
+    <div id="codingSection" style="display: none">
+      <div class="row">
+        <div class="col-md-6">
+          <div id="editor" ></div>
+        </div>
+        <div class="col-md-6">
+          <pre id="output"></pre>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="compileAndRunCode()" id="compile">Run my code</button>
+      <button type="button" class="btn btn-success" onclick="checkAnswer()" id="check">Submit and Check Answer</button>
+      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#hintsModal">Get Hints</button>
+    </div>
+  </div>
+
+
+<!-- Modal for importing modules-->
+<div class="modal fade modal-lg" id="modulesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Select the module to import</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <select class="form-select" size=7 aria-label="Default select example">
+          <option value="bcrypt">bcrypt</option>
+          <option value="bitarray">bitarray</option>
+          <option value="cryptography">cryptography</option>
+          <option value="decorator">decorator</option>
+          <option value="matplotlib">matplotlib</option>
+          <option value="mpmath">mpmath</option>
+          <option value="numpy">numpy</option>
+          <option value="opencv-python">opencv-python</option>
+          <option value="regex">regex</option>
+          <option value="scikit-learn">scikit-learn</option>
+          <option value="scipy">scipy</option>
+          <option value="six">six</option>
+          <option value="sympy">sympy</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Import" id="import">Import</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for hints-->
+<div class="modal fade modal-xl" id="hintsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Hints</h1>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="hints">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <body>
+  <script>
+    const easterEgg = new Konami(() => {
+      // Get a reference to the modal element
+      var myModal = new bootstrap.Modal(document.getElementById("modulesModal"));
+      myModal.show();
+  });
+    var editor;
+    let params = new URLSearchParams(document.location.search);
+    var question = params.get("question") == null ? "0" : params.get("question");
+    if (config[question] == undefined || question > config.length - 1)  {
+      question = 'err';
+      document.querySelector('.loader').style.display = "none";
+      document.querySelector('#title').innerHTML = "This question does not exists!";
+      throw "Invalid question number";
+    }
+    if (config[question].test.length == 0){
+      document.getElementById("check").style.display = "none";
+    }
+
+    async function init() {
+      document.querySelector("#title").innerHTML = config[question].title;
+      document.querySelector("#description").innerHTML = config[question].description;
+      document.querySelector("#hints").innerHTML = config[question].hints;
+      self.pyodide = await loadPyodide();
+      await config[question].packages.forEach(pyodide.loadPackage);
+      console.log("Pyodide loaded!");
+      document.querySelector('.loader').style.display = "none";
+      document.querySelector('#codingSection').style.display = "block";
+      require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor/min/vs' }});
+      require(['vs/editor/editor.main'], function() {
+        editor = monaco.editor.create(document.getElementById('editor'), {
+          value: config[question].skeleton.join('\n'),
+          language: 'python',
+          theme: 'vs-dark',
+          automaticLayout: true
+        });
+      })
+      importBtn = document.getElementById("import");
+      selectedModule = document.getElementsByTagName('select')[0];
+      importBtn.addEventListener("click", () => {
+        importPackages(selectedModule.value.split(','));
+      });
+    };
+
+    async function compileAndRunCode() {
+      const code = editor.getValue();
+      let outputElement = document.getElementById('output');
+      outputElement.textContent = '';  // Clear previous output
+
+      try {
+        // Redirect print statements to the output element
+        let output = await pyodide.runPythonAsync(`
+import sys
+import io
+sys.stdout = io.StringIO()
+
+${code}
+sys.stdout.getvalue()
+        `);
+        outputElement.textContent = output;
+      } catch (err) {
+        outputElement.textContent = err;
+      }
+    }
+
+    async function checkAnswer() {
+      const code = editor.getValue();
+      let outputElement = document.getElementById('output');
+      outputElement.textContent = '';  // Clear previous output
+
+      try {
+        let listOfImport = ""
+        for (item of config[question].packages){
+          listOfImport += `import ${item}\n`
+        }
+        // Redirect print statements to the output element
+        let completeCode = `
+import sys
+import io
+${listOfImport}
+
+sys.stdout = io.StringIO()
+
+${extractFunction(code, config[question].functionName)}
+${config[question].additionalFunctions}
+try:
+${'\t'+config[question].test.join('\n\t')}
+except AssertionError as e:
+  raise Exception(e)
+
+sys.stdout.getvalue()
+`
+        let output = await pyodide.runPythonAsync(completeCode);
+        outputElement.textContent = "All tests passed!"
+        if (config[question].key != undefined){
+          outputElement.textContent += " Here is the key: "+config[question].key;
+        }   
+      } catch (err) {
+        console.log(err)
+        outputElement.textContent = "One or more tests failed.";
+      }
+     
+    }
+
+    async function importPackages(packages) {
+      try{
+        await pyodide.loadPackage(packages);
+        alert("Packages loaded!");
+      }
+      catch (err) {
+        alert(err);
+      }
+    }
+
+    function extractFunction(code, functionName){
+      const functionPattern = new RegExp(`def ${functionName}\\(([^)]*)\\):([\\s\\S]*?)(?=def |$)`);
+      const match = functionPattern.exec(code);
+      return match[0];
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>

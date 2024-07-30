@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Key Submission</title>
+    </head>
+    <style>
+        .required:after {
+          content:" *";
+          color: red;
+        }
+      </style>
+    
+    <body>
+        <header-component></header-component>
+
+        <div class="container mt-2">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-6 col-md-8">
+                   <div class="card shadow-sm">
+                      <div class="card-body">
+                            <h3 id="labDescription"></h3>
+                            <div class="mb-3" id="emailField">
+                                <label for="email" class="form-label required">Email address</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required/>
+                                <div id="emailHelp" class="form-text">Please use the same email throughout the workshop.</div>
+                            </div>
+                            <div id = "keyForm">
+                                <hr>
+                                <h5>You may repeat submission. If the field left empty, latest submission record will be kept.</h5>
+                                <div id="inputSection"></div>
+                                <button class="btn btn-primary" type="submit" onclick="submit()">Submit</input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <!-- Scirpts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+        <script src="rpg/score.js"></script>
+    </body>
+    <script>
+        let today = Number(new Date().getDate());
+        //today = 31;
+        window.onload = () => {
+            const searchParams = new URLSearchParams(window.location.search);
+            const submit = searchParams.get("submit");
+            let description = document.querySelector("#labDescription");
+            switch (submit) {
+                case "1":
+                    description.innerHTML = "Key submission for Lab 1 and Lab 2";
+                    break;
+                case "2":
+                    description.innerHTML = "Key submission for Lab 3 and Lab 4";
+                    break;
+                case "3":
+                    description.innerHTML = "Key submission for Lab 5 and Lab 6";
+                    break;
+                default:
+                    description.innerHTML = "No submission available";
+            }
+            // TODO: hard coded here, change later
+
+            if ((today % 31) + 1 == submit) {
+                let inputSection = document.querySelector("#inputSection");
+                if (submit == "1") {
+                    inputSection.innerHTML = `
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 1 Q1 - Area of circle</label>
+                        <input type="text" class="form-control" id="q1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 1 Q2 - Sphinx's riddle</label>
+                        <input type="text" class="form-control" id="q2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 1 Q3 - Prime number</label>
+                        <input type="text" class="form-control" id="q3">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 2 Q1 - Base Conversion I</label>
+                        <input type="text" class="form-control" id="q4">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 2 Q2 - Base Conversion II</label>
+                        <input type="text" class="form-control" id="q5">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 2 Q3 - Base Conversion III</label>
+                        <input type="text" class="form-control" id="q6">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 2 Q4 - Base Conversion IV</label>
+                        <input type="text" class="form-control" id="q7">
+                    </div>
+                `;
+                }
+                else if (submit == "2") {
+                    inputSection.innerHTML = `
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 3 Q1 - Frequency analysis</label>
+                        <input type="text" class="form-control" id="q8">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 3 Q2 - Caesar cipher encode</label>
+                        <input type="text" class="form-control" id="q9">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 4 Q1 - Breaking LCG PRNG</label>
+                        <input type="text" class="form-control" id="q10">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 4 Q2 - AES Decryption</label>
+                        <input type="text" class="form-control" id="q11">
+                    </div>
+                    `;
+                }
+                else if (submit == "3") {
+                    inputSection.innerHTML = `
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 5 Q1 - XSS Lab</label>
+                        <input type="text" class="form-control" id="q12">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 6 Q1 - Shopping center</label>
+                        <input type="text" class="form-control" id="q13">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Lab 6 Q2 - Buffer Overflow</label>
+                        <input type="text" class="form-control" id="q14">
+                    </div>
+                    `;
+                }
+            }
+            else {
+               document.querySelector("#keyForm").innerHTML = "";
+               document.querySelector("#emailField").innerHTML = "";
+               document.querySelector("#labDescription").innerHTML = "The key submission for this lab is not available."; 
+            }
+
+        }
+
+        async function submit() {
+            let form = document.querySelector("#keyForm");
+            let email = document.querySelector("#email").value;
+            if(email == "") {
+                alert("Please fill in your email.");
+                return;
+            }
+            let input = form.getElementsByTagName("input");
+            for(let i = 0; i < input.length; i++) {
+                if (input[i].value == "") {
+                    continue;
+                }
+                else{
+                    await updateQuestionStatus(email, Number(input[i].id.split("q")[1]), input[i].value);                
+                }
+            }
+            alert("Your key submission has been recorded.");
+        }
+    </script>
+</html  

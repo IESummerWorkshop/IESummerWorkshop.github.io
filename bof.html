@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/fonts/source-code-pro.css">
+        <link rel="stylesheet" href="assets/css/binary-exploitation/jquery-ui.min.css">
+        <link rel="stylesheet" href="assets/css/bof-style.css">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <!-- and it's easy to individually load additional languages -->
+        <script>hljs.highlightAll();</script>
+        <title>Buffer Overflow Demo</title>
+    </head>
+    <body>
+        <header-component></header-component>
+        <div class="col-lg-8 mx-auto px-4 py-3">
+            <!--
+            <header class="d-flex align-items-center pb-3 mb-5 border-bottom" id="">
+            The Chinese University of Hong Kong
+            </header>
+            -->
+            <main class="">
+                <section class="" id="">
+                    <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Client-side Demo: Buffer Overflow</h2>
+                    <div class="container hljs card mb-3">
+<pre><code class="language-c">#include "stdio.h"
+
+void win(){
+// You win by calling this function.
+}
+
+void main(){
+    vuln();
+}
+
+void vuln(){
+    char arr[0x10];
+    gets(arr);
+    return;
+}</code></pre>
+                    </div>
+
+                    <div>
+                        <div class="container-fluid">
+                            <div class="row"> 
+                               
+                                <div class="col-8">
+                                     <!-- Stack + Registers -->
+                                    <div class="row">
+                                        <div class="col"><h2>Stack</h2><table class="table table-sm table-striped table-bordered border-black" id="stack"></table></div>
+                                        <div class="col"><h2>Registers</h2><table class="table table-sm table-striped table-bordered border-black" id="registers"></table></div>
+                                    </div> 
+                                    
+                                    <!-- Input Section -->
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col" id="user-input">
+                                                <h2>Input</h2>
+                                                <div class="instructions p-3 my-3 border-start border-4 border-info-subtle bg-info-subtle info-text-emphasis">
+                                                    You can change the value of the input by clicking on the bytes
+                                                </div>
+                                                <table class="table table-sm code-font" id="input-field">
+                                                </table>
+                                                <div class="">
+                                                    <textarea class="code-font w-100" id="input-textarea" placeholder="Input your answer here.">4141</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">                      
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="step-mode" onclick="step_mode()">
+                                                <label class="form-check-label" for="step-mode">Single Step Mode</label>
+                                            </div>
+
+                                            <div class="d-none" id="step-mode-checked">
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" onclick="bofRunCode()">Single Step</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-block" id="input-mode">
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" onclick="setHexToTextArea()">Use as input</button>
+                                                </div>
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" onclick="bofRunCode()">Run main( )</button>
+                                                <!-- <span><label for="step-mode">Single Step</label> <input type="checkbox" id="step-mode"></span>-->
+                                                </div>
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" id="input-send">Send to stdin</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h2>Error Log</h2>
+                                            <div id="error-log">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Instrustions -->
+                                <div class="col-4">
+                                    <h2>Functions</h2>
+                                    <div>
+                                        <ul class="nav nav-pills function-tab mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" 
+                                                        id="pills-main-tab" 
+                                                        data-bs-toggle="pill" 
+                                                        data-bs-target="#pills-main" 
+                                                        type="button" 
+                                                        role="tab" 
+                                                        aria-controls="pills-main" 
+                                                        aria-selected="true">
+                                                        Main
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button onclick="reset_vuln_tab()" class="nav-link" id="pills-vuln-tab" data-bs-toggle="pill" data-bs-target="#pills-vuln" type="button" role="tab" aria-controls="pills-vuln" aria-selected="false">Vuln</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button onclick="reset_win_tab()" class="nav-link" id="pills-win-tab" data-bs-toggle="pill" data-bs-target="#pills-win" type="button" role="tab" aria-controls="pills-win" aria-selected="false">Win</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="pills-gets-tab" data-bs-toggle="pill" data-bs-target="#pills-gets" type="button" role="tab" aria-controls="pills-gets" aria-selected="false">Gets</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="instructions">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="" id="">
+                    <!--
+                    <form>
+                        <br>
+                        <div class="pin">
+                          PIN: 
+                          <input type="text" name="pass[]" maxlength="2" autocomplete="off" required pattern="\d{2}" autofocus>
+                          <input type="text" name="pass[]" maxlength="2" autocomplete="off" required pattern="\d{2}">
+                          <input type="text" name="pass[]" maxlength="2" autocomplete="off" required pattern="\d{2}">
+                          <input type="text" name="pass[]" maxlength="2" autocomplete="off" required pattern="\d{2}">
+                          <input type="text" name="pass[]" maxlength="2" autocomplete="off" required pattern="\d{2}">
+                          <input type="text" name="pass[]" maxlength="2" autocomplete="off" required pattern="\d{2}">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-lg btn-primary">SUBMIT</button>
+                      </form>
+                    -->
+                </section>
+
+                <section class="" id="">
+
+                </section>
+            </main>
+        </div>
+        <!--
+        <footer class="container-fluid py-1 bg-body-secondary">
+            <ul class="nav justify-content-center fw-bold">
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">&copy; 2023 The Chinese University of Hong Kong. All Rights Reserved.</p>
+        </footer>
+        -->
+        <!-- Scirpts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/binary-exploitation/capstone-x86.min.js"></script>
+        <script src="assets/js/binary-exploitation/keystone-x86.min.js"></script>
+        <script src="assets/js/binary-exploitation/unicorn-x86.min.js"></script>
+        <script src="assets/js/binary-exploitation/svg-dom-arrows.min.js"></script>
+        <script src="assets/js/binary-exploitation/hex-editor.js"></script>
+        <script src="assets/js/binary-exploitation/emulator.js"></script>
+        <script src="assets/js/binary-exploitation/jquery-3.7.0.min.js"></script>
+        <script type="text/javascript">
+            var $$$ = $.noConflict(true);
+        </script>
+        <link rel="stylesheet" href="assets/css/highlight-styles/atom-one-dark.min.css">
+        <script src="assets/js/highlight.min.js"></script>
+        <script src="assets/js/binary-exploitation/jquery-ui.min.js"></script>
+        <script src="assets/js/binary-exploitation/tooltip.js"></script>
+        <script src="assets/js/binary-exploitation/bof.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+        
+    </body>
+</html>

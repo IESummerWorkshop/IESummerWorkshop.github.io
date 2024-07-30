@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="assets/js/jswasm/sqlite3.js"></script>
+        <script src="assets/js/bank.js"></script>
+        <script src="assets/js/bankDb.js"></script>
+    </head>
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            left: 50%;
+            top: 30%;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            initDb.then((value) => {
+                const searchParams = new URLSearchParams(window.location.search);
+
+                let to = searchParams.get('to');
+                let amount = searchParams.get('amount');
+                if (sessionExists() === false) alert("Please login first");
+                else{
+                    transactionUpdate(getUserbySession(getSesionCookie()), to, amount);
+                }
+                // history.back();
+                window.location.href = '../bank.html';
+            })
+            .catch((err) => {
+                alert(err);
+                // history.back();
+                window.location.href = '../bank.html';
+            })
+        }
+    </script>
+    
+    <body>
+        <div class="loader"></div>
+        <h1>Wait for the transaction to complete...</h1>
+    </body>
+</html>

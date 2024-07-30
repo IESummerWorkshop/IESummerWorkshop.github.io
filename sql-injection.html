@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/sql-injection-style.css">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <!-- and it's easy to individually load additional languages -->
+        <script>hljs.highlightAll();</script>
+        <title>SQL Injection Demo</title>
+    </head>
+    <body>
+        <header-component></header-component>
+        <div class="col-lg-12 mx-auto px-4 py-3">
+            <!-- 
+            <header class="d-flex align-items-center pb-3 mb-5 border-bottom" id="">
+            The Chinese University of Hong Kong
+            </header>
+            -->
+            <main class="">
+                <section class="" id="">
+                    <!--exerpt-->
+                    <div class="container-fluid">
+                        <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Client-side Demo: SQL Injection</h2>
+                        <div class="row mt-3">
+                            <div class="col-6"> 
+                                <!--
+                                <div class="code-block d-flex align-items-center justify-content-center p-4 fs-4 border border-2 hljs mb-3">
+                                    <pre id="sql-code">
+                                        <code class="language-sql">
+
+                                        </code>
+                                    </pre>
+                                </div>
+                                -->
+                                <div class="instructions p-3 mt-3 mb-4 border-start border-4 border-info-subtle bg-info-subtle info-text-emphasis">
+                                    You can try to login the page below.
+                                </div>
+                                <div class="card">
+                                    <h2 class="card-header">Login page</h2>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label class="fw-bold" for="username">Username</label>
+                                            <input type="text" class="form-control" id="username"/>
+                                        </div>
+
+                                        
+                                        <div class="mb-3">
+                                            <label class="fw-bold" for="password">Password</label>
+                                            <input type="password" class="form-control" id="password"/>
+                                        </div>
+                        
+                                        <div class="mb-1 d-flex flex-row">
+                                            <button class="btn btn-primary" id="login">Login</button>                                
+                                        </div>
+
+                                        <div id="output" role="alret">
+
+                                        </div>    
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-6">
+                                <div class="code-block d-flex align-items-center justify-content-center p-4 fs-4 border border-2 hljs mb-3">
+                                    <pre id="sql-code">
+                                        <code class="language-sql">
+
+                                        </code>
+                                    </pre>
+                                </div>
+
+                                <div class="">
+                                    <div class="card bg-dark shadow-2-strong text-center">
+                                        <div class="card-body">
+                                            <table class="table table-dark table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Username</th>
+                                                        <th>Password</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody" class="">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!--
+            <footer class="container-fluid py-1 bg-body-secondary fixed-bottom">
+                <ul class="nav justify-content-center fw-bold">
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+                </ul>
+                <p class="text-center text-body-secondary">&copy; 2023 The Chinese University of Hong Kong. All Rights Reserved.</p>
+            </footer>
+            -->
+        </div>
+        <!-- Scirpts -->
+        <link rel="stylesheet" href="assets/css/highlight-styles/base16/atelier-forest.min.css">
+        <script src="assets/js/highlight.min.js"></script>
+        <script src="assets/js/jswasm/sqlite3.js"></script>
+        <!-- 'backend' logic and rendering logic -->
+        <script src="assets/js/demo-sqli.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+    </body>
+</html>

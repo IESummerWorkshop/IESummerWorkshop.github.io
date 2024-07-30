@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <!-- and it's easy to individually load additional languages -->
+        <title>Testing</title>
+    </head>
+    <body>
+        <header class="sticky-top">
+            <nav class="navbar navbar-expand-sm bg-body-secondary bg-opacity-50">
+              <div class="container-lg">
+                <!-- height 30 rem for mobile / collapse -->
+                <a href="index.html"><img class="logo" src="assets/img/CUHK_logo.png" alt=""></a>
+                <a href="index.html"><img class="logo" src="assets/img/IE_logo.png" alt=""></a>
+                <a href="index.html"><img class="text-logo mt-2" src="assets/img/CUHK_IE_Black.png" alt=""></a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                  <ul class="navbar-nav nav-b ms-auto mb-2 mb-lg-0 fw-bold">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                      </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/sql-injection.html">SQL</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/bof.html">BOF</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/xss.html">XSS</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </header>
+
+        <div class="col-lg-8 mx-auto px-4 py-3">
+            <main class="">
+                <section class="" id="">
+                    <!--exerpt-->
+                    <div class="container-fluid">
+                        <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Concept Demo: Public Key Encryption</h2>
+                        <div class="d-flex flex-row justify-content-evenly mt-5">
+                            <div class="d-flex flex-column justify-content-center"> 
+                                <img src = "/assets/svg/person.svg" alt="person"/>
+                                <div class="text-center">Bob</div>
+                            </div>
+
+                            <div class="d-flex flex-column">
+                                <div class="text-center">Encrypt data by Alice's public key</div>
+                                <img src = "/assets/svg/arrow.svg" height="32px" alt="person"/>
+                            </div>
+
+                            <div class="d-flex flex-column">
+                                <div class="text-center">Encrypted data</div>
+                                <img src = "/assets/svg/secure.svg" height="128px" alt="person"/>
+                            </div>
+
+                            <div class="d-flex flex-column">
+                                <div class="text-center">Decrypt data by Alice's private key</div>
+                                <img src = "/assets/svg/arrow.svg" height="32px" alt="person"/>
+                            </div>
+
+                            <div class="d-flex flex-column justify-content-center"> 
+                                <img src = "/assets/svg/person.svg" alt="person"/>
+                                <div class="text-center">Alice</div>
+                            </div>
+                        </div>
+
+                        <form>
+                            <div class="mb-3">
+                              <label for="user-input" class="form-label">Input</label>
+                              <input type="text" class="form-control" id="user-input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="shift-value" class="form-label">Shift</label>
+                                <input type="text" class="form-control" id="shift-value">
+                            </div>
+
+                            <div id="output">
+
+                            </div>
+                        </form>
+                        <script>
+                            let input = document.getElementById("user-input");
+                            let output = document.getElementById("output");
+                            input.onkeyup = () => {
+                                output.innerHTML = input.value;
+                            }
+                        </script>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!--
+        <footer class="container-fluid py-1 bg-body-secondary fixed-bottom">
+            <ul class="nav justify-content-center fw-bold">
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">&copy; 2023 The Chinese University of Hong Kong. All Rights Reserved.</p>
+        </footer> 
+        -->
+        <!-- Scirpts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>

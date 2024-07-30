@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/fonts/source-code-pro.css">
+        <link rel="stylesheet" href="assets/css/binary-exploitation/jquery-ui.min.css">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="stylesheet" href="assets/css/rop-style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <!-- and it's easy to individually load additional languages -->
+        <title>ROP Demo</title>
+    </head>
+    <body>
+        <header-component></header-component>
+        <div class="col-lg-8 mx-auto p-4">
+            <main class="">
+                <section class="" id="">
+                    <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Client-side Demo: ROP</h2>
+
+                    <div>
+                        <div class="container-fluid">
+                            <div class="row"> 
+                                <div class="col-8">
+                                    <!-- Stacks + Registers -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h2>Stack</h2>
+                                            <div class="overflow-y-scroll" style="height: 37rem;">
+                                                <table class="table table-sm table-striped table-bordered border-black" id="stack"></table>
+                                            </div>
+                                        </div>
+                                        <div class="col"><h2>Registers</h2><table class="table table-sm table-striped table-bordered border-black" id="registers"></table></div>
+                                    </div>
+                                    
+                                    <!-- Input Section -->
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col" id="user-input">
+                                                <h2>Input</h2>
+                                                <div class="instructions p-3 my-3 border-start border-4 border-info-subtle bg-info-subtle info-text-emphasis">
+                                                    You can change the value of the input by clicking on the bytes
+                                                </div>
+                                                <table class="table table-sm" id="input-field"></table>
+                                                <textarea class="w-100" id="input-textarea">4141</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">                      
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="step-mode" onclick="step_mode()">
+                                                <label class="form-check-label" for="step-mode">Single Step Mode</label>
+                                            </div>
+
+                                            <div class="d-none" id="step-mode-checked">
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" onclick="ropRunCode()">Single Step</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-block" id="input-mode">
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" onclick="setHexToTextArea()">Use as input</button>
+                                                </div>
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" onclick="ropRunCode()">Run main( )</button>
+                                                <!-- <span><label for="step-mode">Single Step</label> <input type="checkbox" id="step-mode"></span>-->
+                                                </div>
+                                                <div class="d-inline-block">
+                                                    <button class="btn btn-primary btn-sm" id="input-send">Send to stdin</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h2>Error Log</h2>
+                                            <div id="error-log">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Instructions -->
+                                <div class="col-4">
+                                    <div>
+                                        <h2>Functions</h2>
+                                        <div class="overflow-y-scroll" style="height: 37rem;">
+                                            <div id="instructions">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="" id="">
+
+                </section>
+
+                <section class="" id="">
+
+                </section>
+            </main>
+
+            <footer class="">
+            
+            </footer>
+        </div>
+        <!-- Scirpts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/binary-exploitation/capstone-x86.min.js"></script>
+        <script src="assets/js/binary-exploitation/keystone-x86.min.js"></script>
+        <script src="assets/js/binary-exploitation/unicorn-x86.min.js"></script>
+        <script src="assets/js/binary-exploitation/svg-dom-arrows.min.js"></script>
+        <script src="assets/js/binary-exploitation/hex-editor.js"></script>
+        <script src="assets/js/binary-exploitation/emulator-64.js"></script>
+        <script src="assets/js/binary-exploitation/jquery-3.7.0.min.js"></script>
+        <script type="text/javascript">
+            var $$$ = $.noConflict(true);
+        </script>
+        <script src="assets/js/binary-exploitation/jquery-ui.min.js"></script>
+        <script src="assets/js/binary-exploitation/tooltip.js"></script>
+        <script src="assets/js/binary-exploitation/rop.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+    </body>
+</html>

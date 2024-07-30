@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <!-- and it's easy to individually load additional languages -->
+        <title>Caesar Cipher</title>
+    </head>
+    <body>
+        <header-component></header-component>
+
+        <div class="container-fluid px-5">
+          <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Concept Demo: Caesar Cipher</h2>
+          <div class="table-responsive mx-auto p-1">
+            <table class="table table-striped table-primary text-center border">
+              <thead>
+                <tr>
+                  <th scope="col">A</th>
+                  <th scope="col">B</th>
+                  <th scope="col">C</th>
+                  <th scope="col">D</th>
+                  <th scope="col">E</th>
+                  <th scope="col">F</th>
+                  <th scope="col">G</th>
+                  <th scope="col">H</th>
+                  <th scope="col">I</th>
+                  <th scope="col">J</th>
+                  <th scope="col">K</th>
+                  <th scope="col">L</th>
+                  <th scope="col">M</th>
+                  <th scope="col">N</th>
+                  <th scope="col">O</th>
+                  <th scope="col">P</th>
+                  <th scope="col">Q</th>
+                  <th scope="col">R</th>
+                  <th scope="col">S</th>
+                  <th scope="col">T</th>
+                  <th scope="col">U</th>
+                  <th scope="col">V</th>
+                  <th scope="col">W</th>
+                  <th scope="col">X</th>
+                  <th scope="col">Y</th>
+                  <th scope="col">Z</th> 
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="shift-cipher"></tr>
+              </tbody>
+            </table>
+            <!-- <select id="select" class="form-select" aria-label="Default select example"></select> -->
+            <div class="instructions p-3 my-3 border-start border-4 border-info-subtle bg-info-subtle info-text-emphasis">You may toggle the number below to see the change</div>
+            <input class="number-input form-control w-25 mx-auto text-center" id="u1" value='0' min="0" max="26" type="number" onchange="update()">
+          
+            <div class="form-floating">
+              <textarea class="form-control my-3" placeholder="Leave a comment here" id="plaintext" style="height: 150px; text-transform: uppercase;">Hello! Welcome to the Caesar Cipher Demo!</textarea>
+              <label for="plaintext">Plaintext</label>
+            </div>
+            
+            <div class="form-floating">
+              <div contenteditable="false" class="form-control mb-3 overflow-auto" placeholder="Leave a comment here" id="ciphertext" style="height: 150px"></div>
+              <label for="ciphertext">Ciphertext</label>
+            </div>
+
+            <button class="btn btn-primary" id="substitution" onclick="substitution()">Substitution</button>
+          
+          </div>
+        </div>
+
+        <!-- Scirpts --> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+        <script src="assets/js/caesar-cipher.js" type="text/javascript" defer></script>
+    </body>
+</html>

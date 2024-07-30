@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="stylesheet" href="assets/css/many-time-pad.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- and it's easy to individually load additional languages -->
+        <title>Breaking Many Time Pad</title>
+    </head>
+    <body>
+      <header-component></header-component>
+        <div class="col-lg-10 mx-auto px-4 py-3">
+            <main class="">
+                <!--exerpt-->
+                <div class="container-fluid">
+                <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Concept Demo: Breaking Many Time Pad</h2>
+                    <div id="reveal">
+                        <div id="T1">
+                            <div class="fw-bold mb-2" id="CT1">CT1: </div>
+                            <div class="fw-bold mb-2" id="PT1">PT1: </div>
+                        </div>
+
+                        <div id="T2">
+                            <div class="fw-bold mb-2" id="CT2">CT2: </div>
+                            <div class="fw-bold mb-2" id="PT2">PT2: </div>
+                        </div>
+                        
+                        <div id="T3">
+                            <div class="fw-bold mb-2" id="CT3">CT3: </div>
+                            <div class="fw-bold mb-2" id="PT3">PT3: </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="fw-bold mb-2" id="key">Possible key: </div>
+                    </div> 
+                    <hr>
+
+                    <!--Ciphertext-->
+                    <div id="result">
+                        <div class="fw-bold mb-2" id="Cipher">Ciphertext: </div>                            
+                        <div class="fw-bold mb-2" id="Plaintext">Plaintext: </div>
+                        <button class="btn btn-primary btn-sm" onclick="decryptWithPossibleKey()">Decrypt</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/many-time-pad.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+    </body>
+</html>
+

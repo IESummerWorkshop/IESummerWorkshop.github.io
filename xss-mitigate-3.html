@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/fonts/source-code-pro.css">
+        <link rel="stylesheet" href="assets/css/layout-style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <!-- and it's easy to individually load additional languages -->
+        <script>hljs.highlightAll();</script>
+        <title>XSS Demo - Mitigation 3</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <header-component></header-component>
+
+        <div class="col-lg-8 mx-auto px-4 py-3">
+          <h2 class="fw-bold" style="font-family: 'Fredericka the Great', serif;">Client-side Demo: XSS Mitigation 3</h2>
+            <!--
+            <header class="d-flex align-items-center pb-3 mb-5 border-bottom" id="">
+            The Chinese University of Hong Kong
+            </header>
+            -->
+            <main class="">
+                <div class="instructions p-3 my-3 border-start border-4 border-info-subtle bg-info-subtle info-text-emphasis">
+                    Your goal is to pop an alert in this page
+                </div>
+
+                <div class="card d-flex align-items-start justify-content-center hljs mb-3">
+                    <pre class="card-body"><code class="language-html">&lt;h2 id=&quot;title&quot;&gt;&lt;/h2&gt;
+&lt;script&gt;
+    const validate = str =&gt; {
+        if(str.includes(&quot;&amp;&quot;) || str.includes(&quot;&lt;&quot;) || str.includes(&quot;&gt;&quot;) || str.includes(&quot;&#39;&quot;) || str.includes(&#39;&quot;&#39;)) {
+            alert(&quot;Input should not contain &amp;amp; or &amp;lt; or &amp;gt; or &amp;#39; or &amp;quot;&quot;);
+            return;
+            }
+        else return str;
+    }
+    title.innerHTML = (validate(new URL(location).searchParams.get(&#39;hello&#39;)) || &quot;Hello&quot;) + &quot; World!&quot;
+&lt;/script&gt;
+                    </code></pre>
+                </div>
+                
+                <section class="" id="">
+                    <h2 id="title"></h2>
+                </section>
+            </main>
+
+            <footer class="">
+            
+            </footer>
+        </div>
+        <!-- Scirpts -->
+        <script>
+            const validate = str => {
+                if(str.includes("&") || str.includes("<") || str.includes(">") || str.includes("'") || str.includes('"')) {
+                    alert("Input should not contain &amp; or &lt; or &gt; or &#39; or &quot;");
+                    return;
+                }
+                else return str;
+            }
+            title.innerHTML = (validate(new URL(location).searchParams.get('hello')) || "Hello") + " World!"
+        </script>
+        <link rel="stylesheet" href="assets/css/highlight-styles/atom-one-dark.min.css">
+        <script src="assets/js/highlight.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/components/header.js" type="text/javascript" defer></script>
+    </body>
+</html>
