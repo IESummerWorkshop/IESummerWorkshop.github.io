@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/layout-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- RPG CSS -->
+    <link href="./styles/global.css" type="text/css" rel="stylesheet">
+    <link href="./styles/TextMessage.css" type="text/css" rel="stylesheet">
+    <link href="./styles/SceneTransition.css" type="text/css" rel="stylesheet">
+    <link href="./styles/Menus.css" type="text/css" rel="stylesheet">
+    <link href="./styles/KeyboardMenu.css" type="text/css" rel="stylesheet">
+    <title>RPG Lab</title>
+  </head>
+  <body>
+    <header-component></header-component>
+
+    <div class="container-fluid">
+      <div class="game-container">
+        <canvas class="game-canvas" width="352" height="198"></canvas>
+      </div>
+      <p class="how-to-play">Use Arrow Keys to move. Enter to prompt/talk.</p>
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/components/header.js" type="text/javascript" defer></script>
+
+    <!-- RPG Scripts -->
+    <script src="./utils.js"></script>
+    <script src="./DirectionInput.js"></script>
+    <script src="./Overworld.js"></script>
+    <script src="./GameObject.js"></script>
+    <script src="./Person.js"></script>
+    <script src="./Sprite.js"></script>
+    <script src="./Items.js"></script>
+    <script src="./OverworldMap.js"></script>
+    <script src="./OverworldEvent.js"></script>
+    <script src="./TextMessage.js"></script>
+    <script src="./KeyPressListener.js"></script>
+    <script src="./RevealingText.js"></script>
+    <script src="./SceneTransition.js"></script>
+    <script src="./init.js"></script>
+    <script src="./KeyboardMenu.js"></script>
+    <script src="./SelectionMenu.js"></script>
+    <script src="./FlagMenu.js"></script>
+    <script src="./score.js"></script>
+
+    <!-- State -->
+    <script src="./state/PlayerStates.js"></script>
+
+    <!-- Sign Up and score calculation-->
+    <!-- <script src="./oauth.js"></script>
+    <script src="./score.js"></script> -->
+
+  </body>
+</html>
