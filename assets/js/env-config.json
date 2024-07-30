@@ -1,0 +1,21 @@
+{
+    "DEV": {
+        "SERVER":{
+            "DOMAIN": "http://127.0.0.1",
+            "PORT": 8082
+        },
+        "SERVICE": {
+            "APPSCRIPT": {
+                "SIGNUPURL": "https://script.google.com/macros/s/AKfycbwJuRDNBwsjcZRXzUu1tDRlE5c8YksDybsCQ8XJUukMyQyTfsVi2TAwAYw4p39Pr2sAbQ/exec",
+                "UPDATEQUESTIONSTATUS": "https://script.google.com/macros/s/AKfycbz3qGacictpN_vXN05jyIqcKDtjiQeLKvklhjVS2KEDmcIsrfcIRwOwiLC7HhbEgV1E/exec"
+            },
+            "PYLAB": {
+                "QUESTION#": 8
+            }
+        }
+        
+    },
+    "PROD": {
+        
+    }
+}

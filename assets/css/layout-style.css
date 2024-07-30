@@ -1,0 +1,192 @@
+@import "compare.css" layer(demo.component); 
+
+
+/* purple theme
+ :root[data-theme="light"] {
+    --text: #0b0a0f;
+    --background: #f7f5fa;
+    --primary: #4f16ac;
+    --secondary: #ab8bdf;
+    --accent: #8e5be1;
+  }
+  :root[data-theme="dark"] {
+    --text: #f1f0f5;
+    --background: #07050a;
+    --primary: #8d53e9;
+    --secondary: #402074;
+    --accent: #511ea4;
+  } */
+
+
+  /* Blue theme
+  :root[data-theme="light"] {
+    --text: #040a0b;
+    --background: #fbfefe;
+    --primary: #42a6c2;
+    --secondary: #9eafe0;
+    --accent: #787ad3;
+  }
+  :root[data-theme="dark"] {
+    --text: #f3f9fb;
+    --background: #010404;
+    --primary: #3da1bd;
+    --secondary: #1f3061;
+    --accent: #2c2d87;
+  } */
+  
+  
+
+:root {
+    --base: #f2f4f6;
+    --text: #212121;
+    --type-crypto: #a4ffd4;
+    --type-web: #fef0ab;
+    --type-software: #ffa9a9;
+    --type-database: #b2b2fd;    
+}
+
+.type-crypto {
+    background: var(--type-crypto);
+    color: #0e9b59;
+}
+
+.type-web {
+    background: var(--type-web);
+    color: #ff9d00;
+}
+
+.type-software {
+    background: var(--type-software);
+    color: #b43838;
+}
+
+.type-database {
+    background: var(--type-database);
+    color: #1a41cd;
+}
+
+
+[data-theme ="light"] {
+  color-scheme: light;
+  --base: #f2f4f6;
+  --text: #010012;
+  --hero-title: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+  --card-background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+}
+
+[data-theme ="dark"] {
+  color-scheme: dark;
+  --base: hsl(200 10% 20%);
+  --text: #ffffff;
+  --hero-title: linear-gradient(90deg, #524cff 0%, #00ff88 100%);
+  --card-background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+}
+
+.dropdown-menu {
+    --bs-dropdown-padding-x: .25rem;
+    --bs-dropdown-padding-y: .25rem;
+    --bs-dropdown-link-hover-bg:  #c8c8fa;
+    --bs-dropdown-link-active-bg: #712cf9;
+    --bs-dropdown-font-size: .875rem;
+    font-size: .875rem;
+    border-radius: .5rem;
+}
+
+.dropdown-menu .dropdown-item {
+    margin: .1rem 0;
+    border-radius: .25rem;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--base);
+}
+
+.logo {
+        height: 2rem;
+}
+
+.text-logo {
+    height: 2.5rem;
+}
+
+.card-title{
+    font-size: 1.75rem;
+}
+
+.card-background {
+    background: var(--card-background);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 0;
+}
+
+.card-hover:hover {
+    /* box-shadow: 0 0 20px 1px #045ca7; */
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: 0.5s ease-in-out;
+    box-shadow: rgba(52, 140, 255, 0.4) 5px 5px, rgba(52, 140, 255, 0.3) 10px 10px, rgba(52, 140, 255, 0.2) 15px 15px, rgba(52, 140, 255, 0.1) 20px 20px, rgba(52, 140, 255, 0.05) 25px 25px;
+    /* box-shadow: 5px 5px 11px #1e57ff6e; */
+    /* transform: translateY(-5%); */
+    /* transition: 0.5s; */
+    transition-timing-function: ease;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-family: 'Fredericka the Great', serif;
+    background: var(--hero-title);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*
+.instructions {
+    color: var(--bs-info-text-emphasis, inherit);
+    background-color: var(--bs-info-bg-subtle);
+    border-left: 0.25rem solid var(--bs-info-border-subtle);
+}
+*/
+
+/* `xxl` applies to x-large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) { }
+
+/* `xl` applies to large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { 
+    .hero-title {
+        font-size: 2.75rem;
+        font-family: 'Fredericka the Great', serif;
+        background: var(--hero-title);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+/* `lg` applies to medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .hero-title {
+        font-size: 2.15rem;
+        font-family: 'Fredericka the Great', serif;
+        background: var(--hero-title);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+ }
+
+/* `md` applies to small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {     
+    .hero-title {
+        font-size: 1.5rem;
+        font-family: 'Fredericka the Great', serif;
+        background: var(--hero-title);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+ 
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .logo {
+        height: 2rem;
+    }
+ }

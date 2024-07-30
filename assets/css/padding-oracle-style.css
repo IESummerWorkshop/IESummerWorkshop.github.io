@@ -1,0 +1,36 @@
+.fade-in {
+    animation: fadeIn 1.5s linear forwards;
+}
+
+@keyframes fadeIn {
+ 0% { opacity:0; color: red;}
+ 50% { opacity:0.5; color: red;} 
+ 75% { opacity:0.75; color: red;} 
+ 100% { opacity:1; color: red;} 
+}
+
+.fade-in-plaintext {
+    animation: fadeInPlaintext 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInPlaintext {
+ 0% { opacity:0; color: blue;}
+ 50% { opacity:0.5; color: blue;} 
+ 75% { opacity:0.75; color: blue;} 
+ 100% { opacity:1; color: blue;} 
+}
+
+.fade-in-valid {
+    animation: fadeInValid 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInValid {
+ 0% { opacity:0; color: rgb(3, 124, 19);}
+ 50% { opacity:0.5; color: rgb(3, 124, 19);} 
+ 75% { opacity:0.75; color: rgb(3, 124, 19);} 
+ 100% { opacity:1; color: rgb(3, 124, 19);} 
+}
+
+.blur{
+  -webkit-filter: blur(3px);
+}

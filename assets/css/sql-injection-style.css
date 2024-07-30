@@ -1,0 +1,9 @@
+pre {
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre-line;
+}
+
+.code-block {
+    border-color: rgb(79 70 229) !important;
+}

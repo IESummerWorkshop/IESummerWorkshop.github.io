@@ -1,0 +1,47 @@
+.code-block{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.ui-tooltip {
+	padding: 8px;
+	position: absolute;
+	z-index: 9999;
+	max-width: 600px;
+}
+
+.code-font {
+    font-family: 'Source Code Pro';
+}
+
+button:hover {
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.blink {
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*
+.pin > input {
+    text-align: center;
+    width: 2rem;
+}
+
+.pin > input:invalid {
+    color: red;
+    caret-color: #000;
+  }
+*/
