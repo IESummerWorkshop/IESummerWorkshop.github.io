@@ -249,7 +249,13 @@ encoded = "7C2WAHUH10D57183FN5I55AS77¼G0B8NYJCC7¾64NO296CTGW¼D52J1A4"
 n = b39_to_ascii(encoded)
 print(n)`
       ],
-      "hints": [],
+      "hints": [
+`There are 2 steps you need to do in this task:<br>,
+1. Convert base39 encoded string to decimal value<br> (How do you convert base2 value to base10?)
+2. Convert the decimal value to ASCII (How do you convert base10 to base 16?), you should get a list of number from 0-255
+3. Map the value 0-255 to ASCII value
+`
+      ],
       "key": "QP7D6OA9ID",
     },
     '7': {
