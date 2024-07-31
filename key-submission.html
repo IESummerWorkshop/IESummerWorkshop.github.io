@@ -50,8 +50,8 @@
         <script src="rpg/score.js"></script>
     </body>
     <script>
-        let today = Number(new Date().getDate());
-        //today = 31;
+        let date = Number(new Date().getDate());
+        let time = Number(new Date().getHours());
         window.onload = () => {
             const searchParams = new URLSearchParams(window.location.search);
             const submit = searchParams.get("submit");
@@ -70,10 +70,9 @@
                     description.innerHTML = "No submission available";
             }
             // TODO: hard coded here, change later
-
-            if ((today % 31) + 1 == submit) {
-                let inputSection = document.querySelector("#inputSection");
-                if (submit == "1") {
+            if ((date == 31 || date == 1 || date == 2) && (time < 12 || time >= 14)) {
+                let inputSection = document.querySelector("#inputSection")
+                if (submit == "1" && date==31) {
                     inputSection.innerHTML = `
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Lab 1 Q1 - Area of circle</label>
@@ -105,7 +104,7 @@
                     </div>
                 `;
                 }
-                else if (submit == "2") {
+                else if (submit == "2" && date==1) {
                     inputSection.innerHTML = `
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Lab 3 Q1 - Frequency analysis</label>
@@ -125,7 +124,7 @@
                     </div>
                     `;
                 }
-                else if (submit == "3") {
+                else if (submit == "3" && date==2) {
                     inputSection.innerHTML = `
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Lab 5 Q1 - XSS Lab</label>
@@ -141,6 +140,11 @@
                     </div>
                     `;
                 }
+                else {
+               document.querySelector("#keyForm").innerHTML = "";
+               document.querySelector("#emailField").innerHTML = "";
+               document.querySelector("#labDescription").innerHTML = "The key submission for this lab is not available."; 
+            }
             }
             else {
                document.querySelector("#keyForm").innerHTML = "";
