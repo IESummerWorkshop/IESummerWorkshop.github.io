@@ -254,6 +254,9 @@ print(n)`
 1. Convert base39 encoded string to decimal value<br> (How do you convert base2 value to base10?)
 2. Convert the decimal value to ASCII (How do you convert base10 to base 16?), you should get a list of number from 0-255
 3. Map the value 0-255 to ASCII value
+4. There are 2 test cases in this question:
+- <code>encoded = '¼TOR1K9¾PHMRS4W8FKL8Y95KH0LRD2QL96½GPQMEQ¾ITSDM33KFG¼½J9ESYU2TPQ6T365KX¼QCZNY04ARLO6YF4KD6½O9QBRFJ60QFS6VR8T9¼½6KXOOJ¼¼DDZGKE1JDP½DJRQ4Y9HUE8J3SHFDZSC525TOU26¼XWQRC'</code>, return <code>'The IE department was established in 1989 as the first IE department and remains one of a kind in Hong Kong.'</code><br>
+- <code>encoded = '¾DCIVPOH9J8SE½R4U¾NCJ5T5U¾GIC6733MGNDZPXZNU¼ZP9UT4L7GPV7HZG3ZE¾C6½MJWOOFMRF¾IBCLB2ZY0VLP9LPYD½OX¾NCZILNST84½NIZQPRFLHDJX2KTBZQ'</code>, return <code>We have a world class faculty whose research sits at the intersection of EE and CS.'</code><br>
 `
       ],
       "key": "QP7D6OA9ID",
