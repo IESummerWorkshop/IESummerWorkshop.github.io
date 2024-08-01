@@ -458,7 +458,7 @@ window.OverworldMaps = {
         },
     },
     Day1: {
-        lowerSrc: "./images/maps/Full_Map_day1.png",
+        lowerSrc: "./images/maps/Full_Map_day2.png",
         upperSrc: "./images/maps/Full_Map_Upper.png",
         gameObjects: {
             hero: new Person({
@@ -844,22 +844,22 @@ window.OverworldMaps = {
         },
         cutsceneSpaces: {
             /***** Day 1 Block *****/
-            [utils.asGridCoord(48,24)]: [
-                {
-                    events: [
-                        {type: "textMessage", text: "The area will open in Day 2!"},                        
-                        {who: "hero", type: "walk", direction: "left"},
-                    ]
-                }
-            ],
-            [utils.asGridCoord(48,25)]: [
-                {
-                    events: [
-                        {type: "textMessage", text: "The area will open in Day 2!"},                        
-                        {who: "hero", type: "walk", direction: "left"},
-                    ]
-                }
-            ],
+            // [utils.asGridCoord(48,24)]: [
+            //     {
+            //         events: [
+            //             {type: "textMessage", text: "The area will open in Day 2!"},                        
+            //             {who: "hero", type: "walk", direction: "left"},
+            //         ]
+            //     }
+            // ],
+            // [utils.asGridCoord(48,25)]: [
+            //     {
+            //         events: [
+            //             {type: "textMessage", text: "The area will open in Day 2!"},                        
+            //             {who: "hero", type: "walk", direction: "left"},
+            //         ]
+            //     }
+            // ],
             /***** Day 2 Block *****/
             [utils.asGridCoord(31,23)]: [
                 {
