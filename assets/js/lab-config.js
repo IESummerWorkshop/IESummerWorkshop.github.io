@@ -263,38 +263,38 @@ print(n)`
     },
     '7': {
       "title": "Caesar Cipher",
-      "description": "Caesar Cipher is a classic substitutional cipher.<br> Given a key (integer) and a message, return the decrypted message.<br> For example, if the key is 13 and the message is <code>URYYBJBEYQ</code>, the decrypted message is <code>HELLOWORLD</code>",
+      "description": "Caesar Cipher is a classic substitutional cipher.<br> Given a key (integer) and a message, return the encrypted message.<br> For example, if the key is 13 and the message is <code>HELLOWORLD</code>, the encrypted message is <code>URYYBJBEYQ</code>",
       "packages": [],
       "sampleParam": ["HELLOWORLD", 13],
-      "functionName": "decrypt",
+      "functionName": "encrypt",
       "additionalFunctions": [],
       "test":[
-"assert decrypt(5, 'WFSITRUTXYJCY') == 'RANDOMPOSTEXT'",
-"assert decrypt(-6, 'LUHXIGHYANYMN') == 'RANDOMNEGTEST'",
-"assert decrypt(30, 'SZIVTSW') == 'OVERPOS'",
-"assert decrypt(-41, 'ZGPCYPR') == 'OVERNEG'",
-"assert decrypt(0, 'NOCHANGES') == 'NOCHANGES'"
+"assert encrypt(5, 'RANDOMPOSTEXT') == 'WFSITRUTXYJCY'",
+"assert encrypt(-6, 'RANDOMNEGTEST') == 'LUHXIGHYANYMN'",
+"assert encrypt(30, 'OVERPOS') == 'SZIVTSW'",
+"assert encrypt(-41, 'OVERNEG') == 'ZGPCYPR'",
+"assert encrypt(0, 'NOCHANGES') == 'NOCHANGES'"
       ],
       "skeleton": [
 'MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"',
-"def decrypt(key, message):",
-"\t#TODO Complete the function to decrypt Caesar Cipher with given key",
-'\tdecrypted = ""',
+"def encrypt(key, message):",
+"\t#TODO Complete the function to encrypt Caesar Cipher with given key",
+'\tencrypted = ""',
 "",
-"\treturn decrypted",
+"\treturn encrypted",
 "",
-'print(decrypt(13, "URYYBJBEYQ"))'
+'print(encrypt(13, "HELLOWORLD"))'
       ],
       "hints": [
 `
 1. How many characters are in the alphabet?<br>
-2. How to calculate the original index? It can be calculated by using <code>original_index = (current_index - key)</code><br>
+2. How to calculate the encrypted index? It can be calculated by using <code>original_index = (current_index + key)</code><br>
 3. How should you handle numbers greater than 26? Modulus arithmetic would help<br>
 4. There are 5 test cases in this question:<br>
-- <code>key = 5</code> and <code>message = 'WFSITRUTXYJCY'</code>, return <code>'RANDOMPOSTEXT'</code><br>
-- <code>key = -6</code> and <code>message = 'LUHXIGHYANYMN'</code>, return <code>'RANDOMNEGTEST'</code><br>
-- <code>key = 30</code> and <code>message = 'SZIVTSW'</code>, return <code>'OVERPOS'</code><br>
-- <code>key = -41</code> and <code>message = 'ZGPCYPR'</code>, return <code>'OVERNEG'</code><br>
+- <code>key = 5</code> and <code>message = 'RANDOMPOSTEXT'</code>, return <code>'WFSITRUTXYJCY'</code><br>
+- <code>key = -6</code> and <code>message = 'RANDOMNEGTEST'</code>, return <code>'LUHXIGHYANYMN'</code><br>
+- <code>key = 30</code> and <code>message = 'OVERPOS'</code>, return <code>'SZIVTSW'</code><br>
+- <code>key = -41</code> and <code>message = 'OVERNEG'</code>, return <code>'ZGPCYPR'</code><br>
 - <code>key = 0</code> and <code>message = 'NOCHANGES'</code>, return <code>'NOCHANGES'</code><br>`
       ],
       "key": "8TNWYNPD3K",
