@@ -72,7 +72,7 @@
             // TODO: hard coded here, change later
             if ((date == 31 || date == 1 || date == 2) && (time < 12 || time >= 14)) {
                 let inputSection = document.querySelector("#inputSection")
-                if (submit == "1" && date==31) {
+                if (submit == "1" && (date==31 || date==1)) {
                     inputSection.innerHTML = `
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Lab 1 Q1 - Area of circle</label>
@@ -104,7 +104,7 @@
                     </div>
                 `;
                 }
-                else if (submit == "2" && date==1) {
+                else if (submit == "2" && (date==1 || date==2)) {
                     inputSection.innerHTML = `
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Lab 3 Q1 - Frequency analysis</label>
