@@ -424,6 +424,13 @@ from cryptography.hazmat.primitives.padding import PKCS7
 
 def decrypt(ct, key, iv):
     # TODO: complete the decrypt function and return the plaintext in bytes
+    # TODO: setup a cipher and decryptor
+
+    # TODO: Base 64 decode the ciphertext 
+
+    # TODO: Decrypt the ciphertext (update + finalize) 
+
+    # TODO: Unpad the data (update + finalize)
 
     return plaintext
 
@@ -448,9 +455,11 @@ print(pt)
       "hints": [
         `
           1. The ciphertext are provided in base64 format. To use the ciphertext properly, decode the ciphertext first<br>
-          2. The data is padded with PKCS7, unpad it before proceeding to decryption<br>
+          2. The data is padded with PKCS7, unpad it after decryption<br>
           3. Take a look on the encrypt function, it should help you on completing the task<br>
-          4. Reading the documentation page would help: https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/
+          4. Reading the documentation page would help: <br>
+          <a href="https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/#cryptography.hazmat.primitives.ciphers.Cipher" target="_blank">https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/#cryptography.hazmat.primitives.ciphers.Cipher</a>
+          <a href="https://cryptography.io/en/latest/hazmat/primitives/padding/#cryptography.hazmat.primitives.padding.PKCS7" target="_blank">https://cryptography.io/en/latest/hazmat/primitives/padding/#cryptography.hazmat.primitives.padding.PKCS7</a>
         `
       ],
       "key": "NMF0T6CRKE"
