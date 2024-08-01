@@ -278,7 +278,7 @@ print(n)`
       "skeleton": [
 'MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"',
 "def encrypt(key, message):",
-"\t#TODO Complete the function to encrypt Caesar Cipher with given key",
+"\t# TODO: Complete the function to encrypt Caesar Cipher with given key",
 '\tencrypted = ""',
 "",
 "\treturn encrypted",
