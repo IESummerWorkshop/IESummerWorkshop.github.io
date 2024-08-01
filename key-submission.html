@@ -70,9 +70,10 @@
                     description.innerHTML = "No submission available";
             }
             // TODO: hard coded here, change later
-            if ((date == 31 || date == 1 || date == 2) && ((date==31 && time >= 14) || (date==1 && time < 12))) {
+            console.log(time);
+            if ((date == 31 || date == 1 || date == 2)) {
                 let inputSection = document.querySelector("#inputSection")
-                if (submit == "1" && (date==31 || date==1)) {
+                if (submit == "1" && ((date==31 && time >= 14) || (date==1 && time < 12))) {
                     inputSection.innerHTML = `
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Lab 1 Q1 - Area of circle</label>
