@@ -458,7 +458,7 @@ window.OverworldMaps = {
         },
     },
     Day1: {
-        lowerSrc: "./images/maps/Full_Map_day2.png",
+        lowerSrc: "./images/maps/Full_Map_day3.png",
         upperSrc: "./images/maps/Full_Map_Upper.png",
         gameObjects: {
             hero: new Person({
@@ -861,38 +861,38 @@ window.OverworldMaps = {
             //     }
             // ],
             /***** Day 2 Block *****/
-            [utils.asGridCoord(31,23)]: [
-                {
-                    events: [
-                        {type: "textMessage", text: "The area will open in Day 3!"},                        
-                        {who: "hero", type: "walk", direction: "right"},
-                    ]
-                }
-            ],
-            [utils.asGridCoord(31,24)]: [
-                {
-                    events: [
-                        {type: "textMessage", text: "The area will open in Day 3!"},                        
-                        {who: "hero", type: "walk", direction: "right"},
-                    ]
-                }
-            ],
-            [utils.asGridCoord(31,25)]: [
-                {
-                    events: [
-                        {type: "textMessage", text: "The area will open in Day 3!"},                        
-                        {who: "hero", type: "walk", direction: "right"},
-                    ]
-                }
-            ],
-            [utils.asGridCoord(31,26)]: [
-                {
-                    events: [
-                        {type: "textMessage", text: "The area will open in Day 3!"},                        
-                        {who: "hero", type: "walk", direction: "right"},
-                    ]
-                }
-            ],
+            // [utils.asGridCoord(31,23)]: [
+            //     {
+            //         events: [
+            //             {type: "textMessage", text: "The area will open in Day 3!"},                        
+            //             {who: "hero", type: "walk", direction: "right"},
+            //         ]
+            //     }
+            // ],
+            // [utils.asGridCoord(31,24)]: [
+            //     {
+            //         events: [
+            //             {type: "textMessage", text: "The area will open in Day 3!"},                        
+            //             {who: "hero", type: "walk", direction: "right"},
+            //         ]
+            //     }
+            // ],
+            // [utils.asGridCoord(31,25)]: [
+            //     {
+            //         events: [
+            //             {type: "textMessage", text: "The area will open in Day 3!"},                        
+            //             {who: "hero", type: "walk", direction: "right"},
+            //         ]
+            //     }
+            // ],
+            // [utils.asGridCoord(31,26)]: [
+            //     {
+            //         events: [
+            //             {type: "textMessage", text: "The area will open in Day 3!"},                        
+            //             {who: "hero", type: "walk", direction: "right"},
+            //         ]
+            //     }
+            // ],
         },
         walls: {
             /***** Day 1 Block *****/
