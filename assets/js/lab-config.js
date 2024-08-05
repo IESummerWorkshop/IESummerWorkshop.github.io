@@ -92,7 +92,7 @@ var config = {
           - <code>feet = 7</code>, return <code>154</code><br>
         `
       ],
-      "key": '7N9WBG6WJ2'
+      "key": process.env.FLAG_PARIS
     },
     '2': {
         "title": "Sphinx's riddle👩🦁",
