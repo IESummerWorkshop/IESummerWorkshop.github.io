@@ -1,0 +1,38 @@
+name: Get Secrets
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script
+        env:
+          WORKSHOP_FLAG_Q01: ${{ secrets.WORKSHOP_FLAG_Q01 }}
+          WORKSHOP_FLAG_Q02: ${{ secrets.WORKSHOP_FLAG_Q02 }}
+          WORKSHOP_FLAG_Q03: ${{ secrets.WORKSHOP_FLAG_Q03 }}
+          WORKSHOP_FLAG_Q04: ${{ secrets.WORKSHOP_FLAG_Q04 }}
+          WORKSHOP_FLAG_Q05: ${{ secrets.WORKSHOP_FLAG_Q05 }}
+          WORKSHOP_FLAG_Q06: ${{ secrets.WORKSHOP_FLAG_Q06 }}
+          WORKSHOP_FLAG_Q07: ${{ secrets.WORKSHOP_FLAG_Q07 }}
+          WORKSHOP_FLAG_Q08: ${{ secrets.WORKSHOP_FLAG_Q08 }}
+          WORKSHOP_FLAG_Q09: ${{ secrets.WORKSHOP_FLAG_Q09 }}
+          WORKSHOP_FLAG_Q10: ${{ secrets.WORKSHOP_FLAG_Q10 }}
+          WORKSHOP_FLAG_Q11: ${{ secrets.WORKSHOP_FLAG_Q11 }}
+          WORKSHOP_FLAG_Q12: ${{ secrets.WORKSHOP_FLAG_Q12 }}
+          WORKSHOP_FLAG_Q13: ${{ secrets.WORKSHOP_FLAG_Q13 }}
+        run: node path/to/your/script.js
