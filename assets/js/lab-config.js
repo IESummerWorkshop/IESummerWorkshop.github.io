@@ -10,7 +10,6 @@
 // ],
 // "hints": [],
 // "key": "",
-
   function man(feet){
     if(feet==3) return "elderly";
     else if(feet==2) return "adult";
@@ -32,7 +31,7 @@
     return prime_list;
   }
 
-const config = {
+var config = {
     '0': {
       "title": "Python Playground🎮",
       "description": "Feel free to try Python🐍 here.<br> Do you know what is a Konami Code? Type the Konami Code to import packages!<br>⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️",
@@ -497,4 +496,4 @@ There are 3 test cases in this question:<br>
       ],
       "key": "9EWBYSMUZ3",
     }
-}
+};
