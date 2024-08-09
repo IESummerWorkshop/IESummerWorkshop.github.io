@@ -1,23 +1,29 @@
-name: Get Secrets
+name: Access Secret
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      question:
+        description: 'Question identifier'
+        required: true
+      answer:
+        description: 'Answer to the question'
+        required: true
 
 jobs:
-  build:
+  access-secret:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
 
-      - name: Run script
+      - name: Check Answer
         env:
           WORKSHOP_FLAG_Q01: ${{ secrets.WORKSHOP_FLAG_Q01 }}
           WORKSHOP_FLAG_Q02: ${{ secrets.WORKSHOP_FLAG_Q02 }}
@@ -32,4 +38,7 @@ jobs:
           WORKSHOP_FLAG_Q11: ${{ secrets.WORKSHOP_FLAG_Q11 }}
           WORKSHOP_FLAG_Q12: ${{ secrets.WORKSHOP_FLAG_Q12 }}
           WORKSHOP_FLAG_Q13: ${{ secrets.WORKSHOP_FLAG_Q13 }}
-        run: node ./assets/js/lab-config.js
+        run: |
+          node -e "
+            echo(${process.env['WORKSHOP_FLAG_Q1']});
+          "
