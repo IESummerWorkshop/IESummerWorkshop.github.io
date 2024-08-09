@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Run script
         env:
           WORKSHOP_FLAG_Q01: ${{ secrets.WORKSHOP_FLAG_Q01 }}
@@ -35,4 +32,4 @@ jobs:
           WORKSHOP_FLAG_Q11: ${{ secrets.WORKSHOP_FLAG_Q11 }}
           WORKSHOP_FLAG_Q12: ${{ secrets.WORKSHOP_FLAG_Q12 }}
           WORKSHOP_FLAG_Q13: ${{ secrets.WORKSHOP_FLAG_Q13 }}
-        run: node /assets/js/lab-config.js
+        run: node ./assets/js/lab-config.js
