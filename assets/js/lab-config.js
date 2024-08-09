@@ -11,30 +11,28 @@
 // "hints": [],
 // "key": "",
 
-function man(feet){
-  if(feet==3) return "elderly";
-  else if(feet==2) return "adult";
-  else if(feet==4) return "infant";
-  else return "unknown";
-}
-
-function prime(max){
-  prime_list = [];
-  for(i = 2; i < max + 1; i++){
-    flag = true;
-    for(j = 2; j < i/2+1; j++){
-      if(i%j == 0){
-        flag = false;
-        break;
-      }
-    }
-    if(flag) prime_list.push(i);
+  function man(feet){
+    if(feet==3) return "elderly";
+    else if(feet==2) return "adult";
+    else if(feet==4) return "infant";
+    else return "unknown";
   }
-  return prime_list;
-}
+  function prime(max){
+    prime_list = [];
+    for(i = 2; i < max + 1; i++){
+      flag = true;
+      for(j = 2; j < i/2+1; j++){
+        if(i%j == 0){
+          flag = false;
+          break;
+        }
+      }
+      if(flag) prime_list.push(i);
+    }
+    return prime_list;
+  }
 
-
-var config = {
+const config = {
     '0': {
       "title": "Python Playground🎮",
       "description": "Feel free to try Python🐍 here.<br> Do you know what is a Konami Code? Type the Konami Code to import packages!<br>⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️",
@@ -92,7 +90,8 @@ var config = {
           - <code>feet = 7</code>, return <code>154</code><br>
         `
       ],
-      "key": process.env.FLAG_PARIS
+      "key": process.env.WORKSHOP_FLAG_Q01
+      // "key": "7N9WBG6WJ2"
     },
     '2': {
         "title": "Sphinx's riddle👩🦁",
@@ -336,11 +335,11 @@ def modinv(b, n):
 `# Function to generate a list of random numbers based on LCG PRNG
 # Masked the value for multiplier and increment
 def lcg(seed, no_of_round=10, multiplier='?', increment='?', modulus=2**31):
-	rand_list = []
-	for i in range(0, no_of_round):
-		seed = (multiplier * seed + increment) % modulus
-		rand_list.append(seed)
-	return rand_list
+  rand_list = []
+  for i in range(0, no_of_round):
+    seed = (multiplier * seed + increment) % modulus
+    rand_list.append(seed)
+  return rand_list
 
 # Implementation of extended euclid's algorithm
 def egcd(a, b):
