@@ -89,8 +89,8 @@ var config = {
           - <code>feet = 7</code>, return <code>154</code><br>
         `
       ],
-      "key": flag[0]
-      // "key": "7N9WBG6WJ2"
+      // "key": flag[0]
+      "key": "7N9WBG6WJ2"
     },
     '2': {
         "title": "Sphinx's riddle👩🦁",
