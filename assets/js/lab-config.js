@@ -9,7 +9,24 @@
 // "skeleton": [
 // ],
 // "hints": [],
-// "key": "",
+
+const retrieveKey = function (question){
+  console.log("Retrieving key...")
+  return new Promise((resolve, reject) => {
+    const requestOptions = {
+      method: "GET",
+    };
+    
+    fetch("https://script.google.com/macros/s/AKfycbwB3IDwJ8UpZT0mviJWHRZmbb5ExqyLfMNvYwIQcWFLa8sIOYBPvj8kfPIUAmFZfKqQDw/exec?question="+question, requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => reject(error));
+  })
+
+}
+
 
   function man(feet){
     if(feet==3) return "elderly";
@@ -31,6 +48,7 @@
     }
     return prime_list;
   }
+
 var config = {
     '0': {
       "title": "Python Playground🎮",
@@ -89,8 +107,6 @@ var config = {
           - <code>feet = 7</code>, return <code>154</code><br>
         `
       ],
-      // "key": flag[0]
-      "key": "7N9WBG6WJ2"
     },
     '2': {
         "title": "Sphinx's riddle👩🦁",
@@ -123,7 +139,6 @@ var config = {
             - <code>feet = 5</code>, return <code>'unknown'</code><br>
           `
         ],
-        "key": '2KE4WAZX58'
     },
     '3': {
       "title": "Challenge Question: Prime Numbers",
@@ -158,7 +173,6 @@ var config = {
         <br>
         `
       ],
-      "key": 'XNITLR1FTE'
     },
     '4': {
       "title": "Base Conversion I",
@@ -187,7 +201,6 @@ var config = {
           - <code>hex = '0xff'</code>, return <code>255</code><br>
         `
       ],
-      "key": "WPFE7XPK9V",
     },
     '5': {    
         "title": "Base Conversion II",

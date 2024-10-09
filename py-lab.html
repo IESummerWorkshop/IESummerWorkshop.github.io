@@ -240,11 +240,26 @@ except AssertionError as e:
 
 sys.stdout.getvalue()
 `
+        outputElement.textContent = "Checking with test cases...";
         let output = await pyodide.runPythonAsync(completeCode);
-        outputElement.textContent = "All tests passed!"
-        if (config[question].key != undefined){
-          outputElement.textContent += " Here is the key: "+config[question].key;
-        }   
+
+        retrieveKey(question)
+          .then((result) => {
+            console.log(result);
+            result = eval('('+result+')');
+            console.log(typeof(result));
+            if (result["status"] == "success") {
+              outputElement.textContent = "All tests passed! Here is the key: "+ result["message"];
+            }
+            else {
+              console.log(result["message"]);
+              outputElement.textContent = "One or more tests failed.";
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            outputElement.textContent = "One or more tests failed.";
+          });
       } catch (err) {
         console.log(err)
         outputElement.textContent = "One or more tests failed.";
