@@ -240,14 +240,29 @@ except AssertionError as e:
 
 sys.stdout.getvalue()
 `
+        
+        const retrieveKey = function (question){
+          console.log("Retrieving key...")
+          return new Promise((resolve, reject) => {
+            const requestOptions = {
+              method: "GET",
+            };
+            
+            fetch("https://script.google.com/macros/s/AKfycbwB3IDwJ8UpZT0mviJWHRZmbb5ExqyLfMNvYwIQcWFLa8sIOYBPvj8kfPIUAmFZfKqQDw/exec?question="+question, requestOptions)
+              .then((response) => response.text())
+              .then((result) => {
+                resolve(result);
+              })
+              .catch((error) => reject(error));
+          })
+        }
+      
         outputElement.textContent = "Checking with test cases...";
         let output = await pyodide.runPythonAsync(completeCode);
 
         retrieveKey(question)
           .then((result) => {
-            console.log(result);
             result = eval('('+result+')');
-            console.log(typeof(result));
             if (result["status"] == "success") {
               outputElement.textContent = "All tests passed! Here is the key: "+ result["message"];
             }

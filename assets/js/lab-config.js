@@ -10,24 +10,6 @@
 // ],
 // "hints": [],
 
-const retrieveKey = function (question){
-  console.log("Retrieving key...")
-  return new Promise((resolve, reject) => {
-    const requestOptions = {
-      method: "GET",
-    };
-    
-    fetch("https://script.google.com/macros/s/AKfycbwB3IDwJ8UpZT0mviJWHRZmbb5ExqyLfMNvYwIQcWFLa8sIOYBPvj8kfPIUAmFZfKqQDw/exec?question="+question, requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        resolve(result);
-      })
-      .catch((error) => reject(error));
-  })
-
-}
-
-
   function man(feet){
     if(feet==3) return "elderly";
     else if(feet==2) return "adult";
