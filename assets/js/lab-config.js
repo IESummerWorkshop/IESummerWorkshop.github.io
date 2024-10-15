@@ -84,9 +84,9 @@ var config = {
         1. What is the formula for area of circle? <code>π * r<sup>2</sup></code><br>
         2. To round off a value in python, you may use <code>round(x)</code><br>
         3. There are 3 test case in this question:<br>
-          - <code>feet = 0</code>, return <code>0</code><br>
-          - <code>feet = 5</code>, return <code>78</code><br>
-          - <code>feet = 7</code>, return <code>154</code><br>
+          - <code>r = 0</code>, return <code>0</code><br>
+          - <code>r = 5</code>, return <code>78</code><br>
+          - <code>r = 7</code>, return <code>154</code><br>
         `
       ],
     },
