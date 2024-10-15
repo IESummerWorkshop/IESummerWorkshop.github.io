@@ -62,7 +62,7 @@ var config = {
     },
     '1': {
       "title": "Area of Circle",
-      "description": "🧮➕🔢<br>Write a function <code>area_of_circle(r)</code> that calculates the area of ciecle.<br> Given that radius <code>r = 3 </code>is passed to the function, the function should return <code>28</code>. Please use 3.14 for pi and round off the value to nearest integer",
+      "description": "🧮➕🔢<br>Write a function <code>area_of_circle(r)</code> that calculates the area of circle.<br> Given that radius <code>r = 3 </code>is passed to the function, the function should return <code>28</code>. Please use 3.14 for pi and round off the value to nearest integer",
       "functionName": "area_of_circle",
       "additionalFunctions": [],
       "packages": [],
