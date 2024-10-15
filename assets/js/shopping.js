@@ -1,8 +1,8 @@
 'use strict';
 /** This file contins the 'backend' logic of the demo.
  */
-
-let database = [];
+(function(){
+    let database = [];
 let db = "";
 
 
@@ -145,4 +145,6 @@ function getProductFromDb(category){
     })
     return rows;
 }
+})();
+
 
